@@ -1,0 +1,14 @@
+.auth__content {
+  max-width: 32rem;
+  background: var(--black);
+  border-radius: 10px;
+}
+
+.input-checkbox {
+  display: flex;
+  align-items: baseline;
+}
+
+.input-checkbox a {
+  text-decoration: underline;
+}
