@@ -24,7 +24,6 @@ const Login = () => {
     });
 
     const { data } = await response.json();
-    console.log(data);
 
     if (data) {
       const { token, user, wishlist, cart } = data;
@@ -54,7 +53,9 @@ const Login = () => {
             placeholder="**********"
           />
           <div className="my-3">
-            <button className="btn btn--primary width-100 mx-0">Login</button>
+            <button type="submit" className="btn btn--primary width-100 mx-0">
+              Login
+            </button>
           </div>
           <p className="ta-center">
             <Link to="/signup" className="btn btn--link">

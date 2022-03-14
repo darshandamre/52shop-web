@@ -27,7 +27,6 @@ const SignUp = () => {
       });
 
       const { data } = await response.json();
-      console.log(data);
 
       if (data) {
         const { token, user, wishlist, cart } = data;
@@ -79,8 +78,6 @@ const SignUp = () => {
           </p>
         </form>
       </div>
-
-      <pre>{JSON.stringify({ name, email, password }, null, 2)}</pre>
     </main>
   );
 };
