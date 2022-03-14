@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import { useUser } from "../../context/UserContext.js";
+import { removeToken } from "../../utils/token.js";
 import "./Header.css";
 
 const Header = () => {
+  const {
+    state: { user },
+    dispatch
+  } = useUser();
+
   return (
     <header className="header">
       <div className="container">
@@ -16,9 +23,20 @@ const Header = () => {
           <Link to="cart" className="btn btn--link m-0">
             <i className="fa-solid fa-cart-shopping"></i> Cart
           </Link>
-          <Link to="signup" className="btn btn--primary m-0">
-            SignUp
-          </Link>
+          {user.id ? (
+            <span
+              onClick={() => {
+                removeToken();
+                dispatch({ type: "LOGOUT" });
+              }}
+              className="btn btn--link">
+              Logout
+            </span>
+          ) : (
+            <Link to="/signup" className="btn btn--primary m-0">
+              SignUp
+            </Link>
+          )}
         </div>
       </div>
     </header>

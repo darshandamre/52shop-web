@@ -1,37 +1,71 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { API } from "../../utils/constants.js";
+import { useUser } from "../../context/UserContext.js";
+import { setToken } from "../../utils/token.js";
+import { InputField } from "../InputField.js";
 import "./Auth.css";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { dispatch } = useUser();
+  const navigate = useNavigate();
+
+  const submitHandler = async e => {
+    e.preventDefault();
+    if (!name || !email || !password) return;
+    try {
+      const response = await fetch(`${API}/signup`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const { data } = await response.json();
+      console.log(data);
+
+      if (data) {
+        const { token, user, wishlist, cart } = data;
+        setToken(token);
+        dispatch({ type: "SET_USER_INFO", payload: { user, wishlist, cart } });
+        return navigate("/");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <main className="auth">
       <div className="container">
-        <div className="auth__content mx-auto p-6">
+        <form onSubmit={submitHandler} className="auth__content mx-auto p-6">
           <h2 className="h2 ta-center mt-0">SignUp</h2>
-          <label className="text-base" for="email">
-            Email
-          </label>
-          <input
-            className="input width-100 mb-3"
-            id="email"
+          <InputField
+            value={name}
+            onChange={e => setName(e.target.value)}
+            label="Name"
+            type="text"
+            placeholder="bob"
+          />
+          <InputField
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            label="Email"
             type="email"
             placeholder="name@example.com"
           />
-          <label className="text-base" for="Password">
-            Password
-          </label>
-          <input
-            className="input width-100 mb-3"
-            id="Password"
-            type="Password"
-            placeholder="***********"
+          <InputField
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            label="Password"
+            type="password"
+            placeholder="**********"
           />
-          <div className="input-checkbox">
-            <input type="checkbox" id="remember-me" />
-            <label for="remember-me" className="ml-1">
-              I accept all Terms & Conditions
-            </label>
-          </div>
           <div className="my-3">
             <button className="btn btn--primary width-100 mx-0">
               Create New Account
@@ -43,8 +77,10 @@ const SignUp = () => {
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>
           </p>
-        </div>
+        </form>
       </div>
+
+      <pre>{JSON.stringify({ name, email, password }, null, 2)}</pre>
     </main>
   );
 };

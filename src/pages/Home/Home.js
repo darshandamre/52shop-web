@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import accessoriesCategoryImg from "../../assets/accessories-category-square.jpg";
 import heroImg from "../../assets/art-of-play.jpg";
 import cardistryTrainersCategoryImg from "../../assets/cardistry-trainers.jpg";
@@ -13,16 +12,14 @@ const Home = () => {
   return (
     <div>
       <main>
-        <Link to="/products">
-          <section className="hero">
-            <img
-              className="hero__image"
-              src={heroImg}
-              alt="Premium playing cards"
-            />
-            <h1 className="hero__text mx-2">Premium Playing Cards</h1>
-          </section>
-        </Link>
+        <section className="hero">
+          <img
+            className="hero__image"
+            src={heroImg}
+            alt="Premium playing cards"
+          />
+          <h1 className="hero__text mx-2">Premium Playing Cards</h1>
+        </section>
 
         <section className="my-8 section--categories">
           <div className="container">
