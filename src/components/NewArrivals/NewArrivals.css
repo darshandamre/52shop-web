@@ -1,0 +1,19 @@
+.section--new-arrivals > .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.section--new-arrivals .card {
+  cursor: pointer;
+  width: auto;
+}
+
+.section--new-arrivals .card__image {
+  max-width: 12.5rem;
+}
+
+.section--new-arrivals .card__content {
+  margin: 0 0 0 2rem;
+}
