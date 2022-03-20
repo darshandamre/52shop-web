@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import accessoriesCategoryImg from "../../assets/accessories-category-square.jpg";
 import heroImg from "../../assets/art-of-play.jpg";
 import cardistryTrainersCategoryImg from "../../assets/cardistry-trainers.jpg";
@@ -23,46 +24,56 @@ const Home = () => {
 
         <section className="my-8 section--categories">
           <div className="container">
-            <div className="category">
-              <img
-                className="category__image"
-                src={cardsCategoryImg}
-                alt="Cards"
-              />
-              <p className="category__text">Cards</p>
-            </div>
-            <div className="category">
-              <img
-                className="category__image"
-                src={uncutSheetsCategoryImg}
-                alt="Uncut Sheets"
-              />
-              <p className="category__text">Uncut Sheets</p>
-            </div>
-            <div className="category">
-              <img
-                className="category__image"
-                src={cardistryTrainersCategoryImg}
-                alt="Cardistry Trainers"
-              />
-              <p className="category__text">Cardistry Trainers</p>
-            </div>
-            <div className="category">
-              <img
-                className="category__image"
-                src={magicTricksCategoryImg}
-                alt="Magic Tricks"
-              />
-              <p className="category__text">Magic Tricks</p>
-            </div>
-            <div className="category">
-              <img
-                className="category__image"
-                src={accessoriesCategoryImg}
-                alt="Accessories"
-              />
-              <p className="category__text">Accessories</p>
-            </div>
+            <Link to="/products">
+              <div className="category">
+                <img
+                  className="category__image"
+                  src={cardsCategoryImg}
+                  alt="Cards"
+                />
+                <p className="category__text">Cards</p>
+              </div>
+            </Link>
+            <Link to="/products">
+              <div className="category">
+                <img
+                  className="category__image"
+                  src={uncutSheetsCategoryImg}
+                  alt="Uncut Sheets"
+                />
+                <p className="category__text">Uncut Sheets</p>
+              </div>
+            </Link>
+            <Link to="/products">
+              <div className="category">
+                <img
+                  className="category__image"
+                  src={cardistryTrainersCategoryImg}
+                  alt="Cardistry Trainers"
+                />
+                <p className="category__text">Cardistry Trainers</p>
+              </div>
+            </Link>
+            <Link to="/products">
+              <div className="category">
+                <img
+                  className="category__image"
+                  src={magicTricksCategoryImg}
+                  alt="Magic Tricks"
+                />
+                <p className="category__text">Magic Tricks</p>
+              </div>
+            </Link>
+            <Link to="/products">
+              <div className="category">
+                <img
+                  className="category__image"
+                  src={accessoriesCategoryImg}
+                  alt="Accessories"
+                />
+                <p className="category__text">Accessories</p>
+              </div>
+            </Link>
           </div>
         </section>
 

@@ -1,0 +1,25 @@
+.wishlist > .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 2rem;
+}
+
+.wishlist .card__image {
+  width: 100%;
+}
+
+.wishlist .card__fav {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--red);
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}

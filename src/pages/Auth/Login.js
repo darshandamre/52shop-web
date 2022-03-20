@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../utils/constants.js";
 import { useUser } from "../../context/UserContext.js";
 import { setToken } from "../../utils/token.js";
-import { InputField } from "../InputField.js";
+import { InputField } from "../../components";
 import "./Auth.css";
 
 const Login = () => {

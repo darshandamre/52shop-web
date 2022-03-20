@@ -29,7 +29,7 @@ const Header = () => {
                 removeToken();
                 dispatch({ type: "LOGOUT" });
               }}
-              className="btn btn--link">
+              className="btn btn--link m-0">
               Logout
             </span>
           ) : (

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Header, Home, Login, SignUp } from "./pages";
+import { Cart, Home, Login, Product, SignUp, Wishlist } from "./pages";
+import { Header } from "./components";
 
 const App = () => {
   return (
@@ -9,6 +10,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/products" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
     </div>
   );
