@@ -6,7 +6,7 @@ const Filters = () => {
     <aside className="filters px-4 pt-4">
       <div className="filter__header">
         <h3 className="text-md m-0">Filter</h3>
-        <button className="btn btn--link">Clear All</button>
+        <button className="btn btn--link m-0">Clear All</button>
       </div>
 
       <section className="my-3">
@@ -16,6 +16,30 @@ const Filters = () => {
           <span>1000</span>
         </label>
         <input className="width-100" type="range" id="price-range" />
+      </section>
+
+      <section className="my-3">
+        <h4 className="text-md mb-1">Sort By</h4>
+        <ul>
+          <li className="my-1">
+            <input
+              className="mr-1"
+              type="radio"
+              name="price-sort"
+              id="price-low-to-high"
+            />
+            <label htmlFor="price-low-to-high"> Price - low to high</label>
+          </li>
+          <li className="my-1">
+            <input
+              className="mr-1"
+              type="radio"
+              name="price-sort"
+              id="price-high-to-low"
+            />
+            <label htmlFor="price-high-to-low"> Price - high to low</label>
+          </li>
+        </ul>
       </section>
 
       <section className="my-3">
@@ -41,28 +65,6 @@ const Filters = () => {
       </section>
 
       <section className="my-3">
-        <h4 className="text-md mb-1">Brands</h4>
-        <ul>
-          <li className="my-1">
-            <input className="mr-1" type="checkbox" id="brand-virtuoso" />
-            <label htmlFor="brand-virtuoso"> Virtuoso</label>
-          </li>
-          <li className="my-1">
-            <input className="mr-1" type="checkbox" id="brand-nocs" />
-            <label htmlFor="brand-nocs"> NOCs</label>
-          </li>
-          <li className="my-1">
-            <input className="mr-1" type="checkbox" id="brand-1st" />
-            <label htmlFor="brand-1st"> 1st</label>
-          </li>
-          <li className="my-1">
-            <input className="mr-1" type="checkbox" id="brand-fontaine" />
-            <label htmlFor="brand-fontaine"> Fontaine</label>
-          </li>
-        </ul>
-      </section>
-
-      <section className="my-3">
         <h4 className="text-md mb-1">Rating</h4>
         <ul>
           <li className="my-1">
@@ -80,30 +82,6 @@ const Filters = () => {
           <li className="my-1">
             <input className="mr-1" type="radio" name="rating" id="rating-1" />
             <label htmlFor="rating-1"> 1 stars & above</label>
-          </li>
-        </ul>
-      </section>
-
-      <section className="my-3">
-        <h4 className="text-md mb-1">Sort By</h4>
-        <ul>
-          <li className="my-1">
-            <input
-              className="mr-1"
-              type="radio"
-              name="price-sort"
-              id="price-low-to-high"
-            />
-            <label htmlFor="price-low-to-high"> Price - low to high</label>
-          </li>
-          <li className="my-1">
-            <input
-              className="mr-1"
-              type="radio"
-              name="price-sort"
-              id="price-high-to-low"
-            />
-            <label htmlFor="price-high-to-low"> Price - high to low</label>
           </li>
         </ul>
       </section>

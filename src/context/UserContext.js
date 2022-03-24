@@ -13,7 +13,8 @@ const initialState = {
 const userReducer = (state, { type, payload }) => {
   switch (type) {
     case "SET_USER_INFO":
-      return payload;
+      const { wishlist, cart, ...user } = payload.user;
+      return { user, wishlist, cart };
     case "LOGOUT":
       return initialState;
     default:
@@ -26,7 +27,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${API}/user/me`, {
+      const response = await fetch(`${API}/user/get-info`, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
