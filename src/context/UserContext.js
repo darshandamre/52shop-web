@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { API } from "../utils/constants.js";
-import { getToken } from "../utils/token.js";
+import { API } from "../utils/constants";
+import { getToken } from "../utils/token";
 
 const UserContext = createContext();
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Filters } from "../../components";
-import { useProductsQuery } from "../../hooks/useProductsQuery.js";
+import { useProductsQuery } from "../../hooks/useProductsQuery";
 import "./Product.css";
 
 const Product = () => {

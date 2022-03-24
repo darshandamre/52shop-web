@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useUser } from "../../context/UserContext.js";
-import { removeToken } from "../../utils/token.js";
+import { useUser } from "../../context/UserContext";
+import { removeToken } from "../../utils/token";
 import "./Header.css";
 
 const Header = () => {

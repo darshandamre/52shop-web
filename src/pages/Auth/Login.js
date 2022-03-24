@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { API } from "../../utils/constants.js";
-import { useUser } from "../../context/UserContext.js";
-import { setToken } from "../../utils/token.js";
 import { InputField } from "../../components";
+import { useUser } from "../../context/UserContext";
+import { API } from "../../utils/constants";
+import { setToken } from "../../utils/token";
 import "./Auth.css";
 
 const Login = () => {

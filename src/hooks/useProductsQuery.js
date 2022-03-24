@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { API } from "../utils/constants.js";
+import { API } from "../utils/constants";
 
 export const useProductsQuery = () =>
   useQuery(
