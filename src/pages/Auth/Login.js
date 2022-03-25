@@ -14,7 +14,7 @@ const Login = () => {
 
   const submitHandler = async e => {
     e.preventDefault();
-    const response = await fetch(`${API}/login`, {
+    const response = await fetch(`${API}/auth/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",

@@ -1,72 +1,72 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
-import { useUser } from "../../context/UserContext";
-import { API } from "../../utils/constants";
+import { useForm } from "../../hooks/useForm";
+import { useSignupMutation } from "../../hooks/useSignupMutation";
+import { toErrorMap } from "../../utils/toErrorMap";
 import { setToken } from "../../utils/token";
+import { signupValidator } from "../../utils/validator";
 import "./Auth.css";
 
+const initialSignupData = {
+  name: "",
+  email: "",
+  password: ""
+};
+
 const SignUp = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { dispatch } = useUser();
+  const {
+    values,
+    errors: formErrors,
+    fields,
+    isSubmitting,
+    setSubmitting,
+    setErrors
+  } = useForm(initialSignupData, signupValidator);
+
+  const { mutateAsync } = useSignupMutation();
   const navigate = useNavigate();
 
-  const submitHandler = async e => {
+  const signupHandler = async e => {
     e.preventDefault();
-    if (!name || !email || !password) return;
-    try {
-      const response = await fetch(`${API}/signup`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, email, password })
-      });
+    setSubmitting(true);
 
-      const { data } = await response.json();
-
-      if (data) {
-        const { token, user, wishlist, cart } = data;
+    if (!formErrors) {
+      try {
+        const { token } = await mutateAsync(values);
         setToken(token);
-        dispatch({ type: "SET_USER_INFO", payload: { user, wishlist, cart } });
-        return navigate("/");
+        //TODO: invalidate getUserInfo query
+        navigate(-1);
+      } catch (err) {
+        setErrors(toErrorMap(err.response.data.errors));
       }
-    } catch (err) {
-      console.error(err);
     }
+
+    setSubmitting(false);
   };
 
   return (
     <main className="auth">
       <div className="container">
-        <form onSubmit={submitHandler} className="auth__content mx-auto p-6">
+        <form onSubmit={signupHandler} className="auth__content mx-auto p-6">
           <h2 className="h2 ta-center mt-0">SignUp</h2>
+          <InputField {...fields.name} label="Name" placeholder="bob" />
           <InputField
-            value={name}
-            onChange={e => setName(e.target.value)}
-            label="Name"
-            type="text"
-            placeholder="bob"
-          />
-          <InputField
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            {...fields.email}
             label="Email"
-            type="email"
-            placeholder="name@example.com"
+            placeholder="example@xyz.com"
           />
           <InputField
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            {...fields.password}
             label="Password"
             type="password"
             placeholder="**********"
           />
           <div className="my-3">
-            <button className="btn btn--primary width-100 mx-0">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn--primary width-100 mx-0">
               Create New Account
             </button>
           </div>

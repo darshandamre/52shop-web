@@ -27,6 +27,7 @@ const UserProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
+      if (!getToken()) return;
       const response = await fetch(`${API}/user/get-info`, {
         headers: {
           Authorization: `Bearer ${getToken()}`

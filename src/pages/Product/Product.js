@@ -4,9 +4,9 @@ import { useProductsQuery } from "../../hooks/useProductsQuery";
 import "./Product.css";
 
 const Product = () => {
-  const { data, error, isLoading } = useProductsQuery();
+  const { data, error, isLoading, isError } = useProductsQuery();
 
-  if (error) {
+  if (isError) {
     return <div>some error occured. {error.message}</div>;
   }
 
