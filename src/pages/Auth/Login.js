@@ -1,59 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
+import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
-import { useUser } from "../../context/UserContext";
-import { API } from "../../utils/constants";
+import { useForm } from "../../hooks/useForm";
+import { useLoginMutation } from "../../hooks/useLoginMutation";
+import { toErrorMap } from "../../utils/toErrorMap";
 import { setToken } from "../../utils/token";
+import { loginValidator } from "../../utils/validator";
 import "./Auth.css";
 
+const initialLoginData = {
+  email: "",
+  password: ""
+};
+
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { dispatch } = useUser();
+  const { values, errors, fields, isSubmitting, setSubmitting, setErrors } =
+    useForm(initialLoginData, loginValidator);
+  const { mutateAsync } = useLoginMutation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
-  const submitHandler = async e => {
+  const loginHandler = async e => {
     e.preventDefault();
-    const response = await fetch(`${API}/auth/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
-
-    const { data } = await response.json();
-
-    if (data) {
-      const { token, user, wishlist, cart } = data;
-      setToken(token);
-      dispatch({ type: "SET_USER_INFO", payload: { user, wishlist, cart } });
-      return navigate("/");
+    setSubmitting(true);
+    if (!errors) {
+      try {
+        const { token } = await mutateAsync(values);
+        console.log(token);
+        setToken(token);
+        queryClient.invalidateQueries("user", {
+          refetchActive: true,
+          refetchInactive: true
+        });
+        navigate(-2);
+      } catch (err) {
+        setErrors(toErrorMap(err.response.data.errors));
+      }
     }
+    setSubmitting(false);
   };
 
   return (
     <main className="auth">
       <div className="container">
-        <form onSubmit={submitHandler} className="auth__content mx-auto p-6">
+        <form onSubmit={loginHandler} className="auth__content mx-auto p-6">
           <h2 className="h2 ta-center mt-0">Login</h2>
           <InputField
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            {...fields.email}
             label="Email"
-            type="email"
-            placeholder="name@example.com"
+            placeholder="example@xyz.com"
           />
           <InputField
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+            {...fields.password}
             label="Password"
             type="password"
             placeholder="**********"
           />
           <div className="my-3">
-            <button type="submit" className="btn btn--primary width-100 mx-0">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn--primary width-100 mx-0">
               Login
             </button>
           </div>

@@ -1,13 +1,17 @@
+import { useQueryClient } from "react-query";
 import { Link } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
+import { useUserQuery } from "../../hooks/useUserQuery";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
 
 const Header = () => {
-  const {
-    state: { user },
-    dispatch
-  } = useUser();
+  const { data } = useUserQuery();
+  const queryClient = useQueryClient();
+
+  const logoutHandler = () => {
+    removeToken();
+    queryClient.setQueriesData("user", () => undefined);
+  };
 
   return (
     <header className="header">
@@ -23,13 +27,8 @@ const Header = () => {
           <Link to="cart" className="btn btn--link m-0">
             <i className="fa-solid fa-cart-shopping"></i> Cart
           </Link>
-          {user.id ? (
-            <span
-              onClick={() => {
-                removeToken();
-                dispatch({ type: "LOGOUT" });
-              }}
-              className="btn btn--link m-0">
+          {data?.user.id ? (
+            <span onClick={logoutHandler} className="btn btn--link m-0">
               Logout
             </span>
           ) : (

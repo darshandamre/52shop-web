@@ -9,7 +9,7 @@ const signupValidationSchema = yup.object({
 
 const loginValidationSchema = yup.object({
   email: yup.string().email().required(),
-  password: yup.string().min(3, "wrong password").required()
+  password: yup.string().required()
 });
 
 const validator = (schema, values) => {

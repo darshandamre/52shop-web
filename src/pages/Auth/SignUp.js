@@ -1,4 +1,5 @@
 import React from "react";
+import { useQueryClient } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm } from "../../hooks/useForm";
@@ -26,6 +27,7 @@ const SignUp = () => {
 
   const { mutateAsync } = useSignupMutation();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const signupHandler = async e => {
     e.preventDefault();
@@ -35,7 +37,10 @@ const SignUp = () => {
       try {
         const { token } = await mutateAsync(values);
         setToken(token);
-        //TODO: invalidate getUserInfo query
+        queryClient.invalidateQueries("user", {
+          refetchActive: true,
+          refetchInactive: true
+        });
         navigate(-1);
       } catch (err) {
         setErrors(toErrorMap(err.response.data.errors));
