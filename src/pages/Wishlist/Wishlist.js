@@ -11,7 +11,7 @@ const Wishlist = () => {
       <h3 className="h3 ta-center mt-3 mb-6">Wishlist</h3>
       <div className="container">
         {data?.user.wishlist.map(product => (
-          <Card key={product.id} product={product} wishlisted />
+          <Card key={product.id} product={product} />
         ))}
       </div>
     </main>

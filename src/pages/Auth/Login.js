@@ -27,7 +27,6 @@ const Login = () => {
     if (!errors) {
       try {
         const { token } = await mutateAsync(values);
-        console.log(token);
         setToken(token);
         queryClient.invalidateQueries("user", {
           refetchActive: true,
