@@ -1,6 +1,6 @@
 import { useQueryClient } from "react-query";
 import { Link } from "react-router-dom";
-import { useUserQuery } from "../../hooks/useUserQuery";
+import { useUserQuery } from "../../hooks";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
 

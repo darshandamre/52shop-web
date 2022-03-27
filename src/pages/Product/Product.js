@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Filters } from "../../components";
-import { useProductsQuery } from "../../hooks/useProductsQuery";
-import { useUserQuery } from "../../hooks/useUserQuery";
+import { useProductsQuery, useUserQuery } from "../../hooks";
 import "./Product.css";
 
 const Product = () => {
@@ -25,6 +24,7 @@ const Product = () => {
             <div className="container">
               {data.products?.map(product => (
                 <Card
+                  page="products"
                   key={product.id}
                   product={product}
                   wishlisted={userData?.user?.wishlist?.some(

@@ -4,10 +4,10 @@ import { queryClient } from "../queryClient";
 import { API } from "../utils/constants";
 import { getToken } from "../utils/token";
 
-export const useRemoveFromWishlistMutation = () =>
+export const useRemoveFromCartMutation = () =>
   useMutation(
     async productId =>
-      await axios.delete(`${API}/user/wishlist/${productId}`, {
+      await axios.delete(`${API}/user/cart/${productId}`, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -18,7 +18,7 @@ export const useRemoveFromWishlistMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            wishlist: user.wishlist.filter(item => item.id !== productId)
+            cart: user.cart.filter(item => item.id !== productId)
           }
         }))
     }

@@ -3,8 +3,8 @@ import { useQuery } from "react-query";
 import { API } from "../utils/constants";
 import { getToken } from "../utils/token";
 
-export const useUserQuery = () => {
-  return useQuery(
+export const useUserQuery = () =>
+  useQuery(
     "user",
     async () => {
       const res = await axios.get(`${API}/user/get-info`, {
@@ -18,4 +18,3 @@ export const useUserQuery = () => {
       enabled: !!getToken()
     }
   );
-};

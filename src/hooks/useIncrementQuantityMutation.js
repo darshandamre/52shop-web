@@ -4,14 +4,18 @@ import { queryClient } from "../queryClient";
 import { API } from "../utils/constants";
 import { getToken } from "../utils/token";
 
-export const useAddToWishlistMutation = () =>
+export const useIncrementQuantityMutation = () =>
   useMutation(
     async productId => {
-      const res = await axios.post(`${API}/user/wishlist/${productId}`, null, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`
+      const res = await axios.post(
+        `${API}/user/cart/increment/${productId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${getToken()}`
+          }
         }
-      });
+      );
       return res.data;
     },
     {
@@ -20,7 +24,9 @@ export const useAddToWishlistMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            wishlist: [product, ...user.wishlist]
+            cart: user.cart.map(item =>
+              item.id === product.id ? product : item
+            )
           }
         }))
     }
