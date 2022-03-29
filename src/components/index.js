@@ -4,3 +4,4 @@ export { Header } from "./Header/Header";
 export { InputField } from "./InputField/InputField";
 export { NewArrivals } from "./NewArrivals/NewArrivals";
 export { Card } from "./Card/Card";
+export { ProductList } from "./ProductList/ProductList";

@@ -13,6 +13,7 @@ __metadata:
     "@testing-library/react": ^12.0.0
     "@testing-library/user-event": ^13.2.1
     axios: ^0.26.1
+    jsurl: ^0.1.5
     react: ^17.0.2
     react-dom: ^17.0.2
     react-query: ^3.34.16
@@ -7749,6 +7750,13 @@ __metadata:
   version: 5.0.0
   resolution: "jsonpointer@npm:5.0.0"
   checksum: c7ec0b6bb596b81de687bc12945586bbcdc80dfb54919656d2690d76334f796a936270067ee9f1b5bbc2d9ecc551afb366ac35e6685aa61f07b5b68d1e5e857d
+  languageName: node
+  linkType: hard
+
+"jsurl@npm:^0.1.5":
+  version: 0.1.5
+  resolution: "jsurl@npm:0.1.5"
+  checksum: 50b614908d6bdf7800a257d0ecbaf2b8129fbb538db44dc991518034e48b594eca5d7593bdd887a59e48baaa258279aae89f80ac5af200a6c789eb23d45b186f
   languageName: node
   linkType: hard
 

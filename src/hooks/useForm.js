@@ -1,59 +1,6 @@
 import { useCallback, useReducer } from "react";
-
-const createTouched = (object, bool) => {
-  let result = {};
-  for (const key in object) {
-    result = {
-      ...result,
-      [key]: bool
-    };
-  }
-  return result;
-};
-
-const formReducer = (state, { type, payload, validatorFn }) => {
-  switch (type) {
-    case "ON_CHANGE":
-      const newValues = {
-        ...state.values,
-        [payload.name]: payload.value
-      };
-      return {
-        ...state,
-        values: newValues,
-        errors: validatorFn(newValues)
-      };
-
-    case "ON_BLUR":
-      const { touched } = state;
-      if (touched[payload.name]) {
-        return state;
-      }
-      return {
-        ...state,
-        touched: {
-          ...touched,
-          [payload.name]: true
-        }
-      };
-
-    case "SET_SUBMITTING":
-      return {
-        ...state,
-        isSubmitting: payload,
-        touched: payload ? createTouched(state.values, true) : state.touched
-      };
-
-    case "SET_ERRORS":
-      return {
-        ...state,
-        errors: payload
-      };
-
-    default:
-      throw new Error(`invalid action ${type}`);
-  }
-};
+import { formReducer } from "../reducer/formReducer";
+import { createTouched } from "../utils/createTouched";
 
 // initialInputState is an object of the state of input components
 // validaor fn is a function that checks for the input values

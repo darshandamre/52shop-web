@@ -69,6 +69,10 @@ a {
   width: 100%;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .logo {
   font-family: "Orbitron", sans-serif;
   font-size: 2rem;
