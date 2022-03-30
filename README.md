@@ -1,1 +1,3 @@
-# 52shop React App
+# 52shop
+
+E-commerce app for premium playing cards
