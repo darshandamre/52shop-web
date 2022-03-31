@@ -1,0 +1,25 @@
+.hero {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__image {
+  max-width: none;
+  flex-grow: 1;
+}
+
+.hero__text {
+  position: absolute;
+
+  font-family: "Orbitron", sans-serif;
+  font-size: 3rem;
+  line-height: 4rem;
+  text-align: center;
+  color: var(--black);
+  letter-spacing: 0.6rem;
+}
