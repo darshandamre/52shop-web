@@ -1,0 +1,26 @@
+.section--categories > .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.category {
+  position: relative;
+  width: 13.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.category__image {
+  width: 100%;
+}
+
+.category__text {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 1.5rem;
+  background-color: var(--bg-color);
+}
