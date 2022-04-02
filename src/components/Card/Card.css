@@ -1,0 +1,55 @@
+.card__image {
+  width: 100%;
+}
+
+.card__fav {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--red);
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.card__subtitle--canceled {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 2.25rem;
+  text-decoration: line-through;
+}
+
+.quantity__info,
+.card__btn--outline {
+  display: none;
+}
+
+.quantity__info i {
+  cursor: pointer;
+}
+
+.card--horizontal .card__image {
+  width: 18rem;
+}
+
+.card--horizontal .card__subtitle--canceled {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  text-decoration: line-through;
+}
+
+.card--horizontal .card__fav {
+  display: none;
+}
+
+.card--horizontal .quantity__info,
+.card--horizontal .card__btn--outline {
+  display: block;
+}
