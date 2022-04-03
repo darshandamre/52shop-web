@@ -1,0 +1,20 @@
+.filters {
+  grid-area: filters;
+  background-color: var(--card-bg);
+  position: sticky;
+  top: 5.5rem;
+  bottom: 0;
+  height: calc(100vh - 5.5rem);
+  overflow-y: auto;
+}
+
+.filter__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,5 @@
+.product-page {
+  display: grid;
+  grid-template-areas: "filters products";
+  grid-template-columns: 18rem 1fr;
+}
