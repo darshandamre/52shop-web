@@ -6,6 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   const { data } = useUserQuery();
+  const { user } = data ?? {};
   const queryClient = useQueryClient();
 
   const logoutHandler = () => {
@@ -21,13 +22,16 @@ const Header = () => {
         </Link>
 
         <div className="header__actions flex">
-          <Link to="/wishlist" className="btn btn--icon m-0">
+          <Link to="/wishlist" className="btn btn--icon badge-container m-0">
             <i className="fa-regular fa-heart"></i>
+            {user?.wishlist.length > 0 ? (
+              <span class="badge-on-icon">{user?.wishlist.length}</span>
+            ) : null}
           </Link>
           <Link to="cart" className="btn btn--link m-0">
             <i className="fa-solid fa-cart-shopping"></i> Cart
           </Link>
-          {data?.user.id ? (
+          {user?.id ? (
             <span onClick={logoutHandler} className="btn btn--link m-0">
               Logout
             </span>
