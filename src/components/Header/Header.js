@@ -25,7 +25,7 @@ const Header = () => {
           <Link to="/wishlist" className="btn btn--icon badge-container m-0">
             <i className="fa-regular fa-heart"></i>
             {user?.wishlist.length > 0 ? (
-              <span class="badge-on-icon">{user?.wishlist.length}</span>
+              <span className="badge-on-icon">{user?.wishlist.length}</span>
             ) : null}
           </Link>
           <Link to="cart" className="btn btn--link m-0">
@@ -36,8 +36,8 @@ const Header = () => {
               Logout
             </span>
           ) : (
-            <Link to="/signup" className="btn btn--primary m-0">
-              SignUp
+            <Link to="/login" className="btn btn--primary m-0">
+              Login
             </Link>
           )}
         </div>
