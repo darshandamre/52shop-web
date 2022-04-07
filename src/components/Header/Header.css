@@ -13,5 +13,7 @@
 }
 
 .badge-on-icon {
-  transform: translate(-70%, -50%);
+  top: auto;
+  left: auto;
+  z-index: 9;
 }

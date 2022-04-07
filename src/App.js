@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Header } from "./components";
-import { Home, Login, Product, SignUp, Wishlist } from "./pages";
+import { Cart, Home, Login, Product, SignUp, Wishlist } from "./pages";
 
 const App = () => {
   return (
@@ -12,6 +12,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/products" element={<Product />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );

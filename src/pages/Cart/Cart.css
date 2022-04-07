@@ -1,0 +1,29 @@
+.cart__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.cart__details {
+  background: var(--card-bg);
+  border-radius: 5px;
+  max-width: 32.5rem;
+}
+
+.cart__details__title {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--grey);
+}
+
+.price__item {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price__item:nth-last-child(1) {
+  padding: 1rem 0;
+  border-block: 1px solid var(--grey);
+}

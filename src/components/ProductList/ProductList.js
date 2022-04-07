@@ -24,7 +24,7 @@ const ProductList = () => {
           <h3 className="h3 ta-center mt-3 mb-6">Showing Products</h3>
           <div className="container">
             {filteredProducts.map(product => (
-              <Card page="products" key={product.id} product={product} />
+              <Card key={product.id} product={product} />
             ))}
           </div>
         </>

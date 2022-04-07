@@ -23,7 +23,7 @@ const Wishlist = () => {
 
       <div className="container">
         {data?.user.wishlist.map(product => (
-          <Card page="wishlist" key={product.id} product={product} />
+          <Card key={product.id} product={product} />
         ))}
       </div>
     </main>
