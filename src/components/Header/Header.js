@@ -31,7 +31,12 @@ const Header = () => {
           <Link to="cart" className="btn btn--link badge-container m-0">
             <i className="fa-solid fa-cart-shopping"></i> Cart
             {user?.cart.length > 0 ? (
-              <span className="badge-on-icon">{user?.cart.length}</span>
+              <span className="badge-on-icon">
+                {user?.cart?.reduce(
+                  (totalItems, { cartItem }) => totalItems + cartItem.quantity,
+                  0
+                )}
+              </span>
             ) : null}
           </Link>
           {user?.id ? (

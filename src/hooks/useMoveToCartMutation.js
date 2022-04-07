@@ -36,7 +36,10 @@ export const useMoveToCartMutation = () =>
           return {
             user: {
               ...user,
-              wishlist: user.wishlist.filter(item => item.id !== productId)
+              wishlist: user.wishlist.filter(item => item.id !== productId),
+              cart: user.cart.map(item =>
+                item.id === productId ? data?.product : item
+              )
             }
           };
         })
