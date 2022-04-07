@@ -1,7 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { WishlistIconButton } from "../../components";
 import "./Card.css";
+import { CardButtons } from "./CardButtons";
+import { WishlistIconButton } from "./WishlistIconButton";
 
 const Card = ({ product }) => {
   const { pathname } = useLocation();
@@ -24,7 +25,7 @@ const Card = ({ product }) => {
           <i className="px-1 fa-solid fa-circle-plus"></i>
         </p>
 
-        <button className="btn">Add to Cart</button>
+        <CardButtons productId={id} />
       </div>
     </div>
   );
