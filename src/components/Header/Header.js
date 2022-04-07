@@ -28,8 +28,8 @@ const Header = () => {
               <span className="badge-on-icon">{user?.wishlist.length}</span>
             ) : null}
           </Link>
-          <Link to="cart" className="btn btn--link badge-container m-0">
-            <i className="fa-solid fa-cart-shopping"></i> Cart
+          <Link to="cart" className="btn btn--icon badge-container m-1">
+            <i className="fa-solid fa-cart-shopping"></i>
             {user?.cart.length > 0 ? (
               <span className="badge-on-icon">
                 {user?.cart?.reduce(
