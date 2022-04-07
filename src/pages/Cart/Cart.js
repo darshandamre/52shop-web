@@ -63,9 +63,15 @@ const Cart = () => {
             </div>
           )}
 
-          {user?.cart?.map(product => {
-            return <Card key={product.id} product={product} />;
-          })}
+          <div>
+            {user?.cart?.map(product => {
+              return (
+                <div className="mb-6">
+                  <Card key={product.id} product={product} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </main>

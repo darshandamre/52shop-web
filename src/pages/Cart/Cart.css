@@ -7,12 +7,9 @@
 }
 
 .cart__details {
-  max-width: 32.5rem;
-}
-
-.cart__details {
   background: var(--card-bg);
   border-radius: 5px;
+  max-width: 32.5rem;
 }
 
 .cart__details__title {
