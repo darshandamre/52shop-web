@@ -18,7 +18,7 @@ export const useRemoveFromCartMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            cart: user.cart.filter(item => item.id !== productId)
+            cart: user?.cart?.filter(item => item.id !== productId)
           }
         }))
     }

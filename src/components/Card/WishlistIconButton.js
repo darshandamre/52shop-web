@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   useAddToWishlistMutation,
   useRemoveFromWishlistMutation,
@@ -9,6 +9,7 @@ import {
 const WishlistIconButton = ({ productId }) => {
   const { data } = useUserQuery();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { mutate: addToWishlist } = useAddToWishlistMutation();
   const { mutate: removeFromWishlist } = useRemoveFromWishlistMutation();
@@ -16,7 +17,8 @@ const WishlistIconButton = ({ productId }) => {
   const wishlisted = data?.user?.wishlist?.some(item => item.id === productId);
 
   const wishlistHandler = () => {
-    if (!data?.user?.id) return navigate("/login");
+    if (!data?.user?.id)
+      return navigate("/login", { state: { from: location } });
     wishlisted ? removeFromWishlist(productId) : addToWishlist(productId);
   };
 

@@ -9,7 +9,7 @@ import {
 } from "../../hooks";
 
 const CardButtons = ({ productId }) => {
-  const { pathname } = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
   const { data } = useUserQuery();
 
@@ -19,7 +19,7 @@ const CardButtons = ({ productId }) => {
   const { mutate: moveToCart } = useMoveToCartMutation();
   const { mutate: moveToWishlist } = useMoveToWishlistMutation();
 
-  switch (pathname) {
+  switch (location.pathname) {
     case "/cart":
       return (
         <>
@@ -50,7 +50,8 @@ const CardButtons = ({ productId }) => {
         <button
           className="btn"
           onClick={() => {
-            if (!data?.user?.id) return navigate("/login");
+            if (!data?.user?.id)
+              return navigate("/login", { state: { from: location } });
             addToCart(productId);
           }}>
           Add to Cart

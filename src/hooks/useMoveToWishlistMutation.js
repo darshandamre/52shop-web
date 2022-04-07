@@ -22,12 +22,12 @@ export const useMoveToWishlistMutation = () =>
       onError: err => console.error(err),
       onSuccess: (data, productId) =>
         queryClient.setQueryData("user", ({ user }) => {
-          const { wishlist, cart } = user;
+          const { wishlist, cart } = user ?? {};
           if (data?.created) {
             return {
               user: {
                 ...user,
-                cart: cart.filter(item => item.id !== productId),
+                cart: cart?.filter(item => item.id !== productId),
                 wishlist: [data?.product, ...wishlist]
               }
             };
@@ -36,7 +36,7 @@ export const useMoveToWishlistMutation = () =>
           return {
             user: {
               ...user,
-              cart: cart.filter(item => item.id !== productId)
+              cart: cart?.filter(item => item.id !== productId)
             }
           };
         })

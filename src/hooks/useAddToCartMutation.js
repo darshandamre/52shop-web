@@ -26,7 +26,7 @@ export const useAddToCartMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            cart: [product, ...user.cart]
+            cart: [product, ...user?.cart]
           }
         }));
       }

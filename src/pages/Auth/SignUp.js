@@ -78,7 +78,11 @@ const SignUp = () => {
             </button>
           </div>
           <p className="ta-center">
-            <Link to="/login" state={{ from }} className="btn btn--link">
+            <Link
+              to="/login"
+              state={{ from }}
+              replace
+              className="btn btn--link">
               Already have an account
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>

@@ -18,7 +18,7 @@ export const useRemoveFromWishlistMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            wishlist: user.wishlist.filter(item => item.id !== productId)
+            wishlist: user?.wishlist?.filter(item => item.id !== productId)
           }
         }))
     }

@@ -24,7 +24,7 @@ export const useDecrementQuantityMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            cart: user.cart.map(item =>
+            cart: user?.cart?.map(item =>
               item.id === product.id ? product : item
             )
           }

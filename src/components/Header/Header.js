@@ -1,5 +1,5 @@
 import { useQueryClient } from "react-query";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useUserQuery } from "../../hooks";
 import { removeToken } from "../../utils/token";
 import "./Header.css";
@@ -8,6 +8,7 @@ const Header = () => {
   const { data } = useUserQuery();
   const { user } = data ?? {};
   const queryClient = useQueryClient();
+  const location = useLocation();
 
   const logoutHandler = () => {
     removeToken();
@@ -44,7 +45,10 @@ const Header = () => {
               Logout
             </span>
           ) : (
-            <Link to="/login" className="btn btn--primary m-0">
+            <Link
+              to="/login"
+              state={{ from: location }}
+              className="btn btn--primary m-0">
               Login
             </Link>
           )}
