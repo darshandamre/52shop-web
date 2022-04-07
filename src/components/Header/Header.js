@@ -28,8 +28,11 @@ const Header = () => {
               <span className="badge-on-icon">{user?.wishlist.length}</span>
             ) : null}
           </Link>
-          <Link to="cart" className="btn btn--link m-0">
+          <Link to="cart" className="btn btn--link badge-container m-0">
             <i className="fa-solid fa-cart-shopping"></i> Cart
+            {user?.cart.length > 0 ? (
+              <span className="badge-on-icon">{user?.cart.length}</span>
+            ) : null}
           </Link>
           {user?.id ? (
             <span onClick={logoutHandler} className="btn btn--link m-0">
