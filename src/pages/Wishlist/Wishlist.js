@@ -11,7 +11,7 @@ const Wishlist = () => {
     <main className="wishlist mb-8">
       <h3 className="h3 ta-center mt-3 mb-6">Wishlist</h3>
 
-      {data?.user.wishlist.length === 0 ? (
+      {data?.user?.wishlist?.length === 0 ? (
         <div className="ta-center mx-2">
           No items in your wishlist{" "}
           <Link to="/products" className="link">
@@ -22,7 +22,7 @@ const Wishlist = () => {
       ) : null}
 
       <div className="container">
-        {data?.user.wishlist.map(product => (
+        {data?.user?.wishlist?.map(product => (
           <Card key={product.id} product={product} />
         ))}
       </div>

@@ -24,13 +24,13 @@ const Header = () => {
         <div className="header__actions flex">
           <Link to="/wishlist" className="btn btn--icon badge-container m-0">
             <i className="fa-regular fa-heart"></i>
-            {user?.wishlist.length > 0 ? (
-              <span className="badge-on-icon">{user?.wishlist.length}</span>
+            {user?.wishlist?.length > 0 ? (
+              <span className="badge-on-icon">{user?.wishlist?.length}</span>
             ) : null}
           </Link>
           <Link to="cart" className="btn btn--icon badge-container m-1">
             <i className="fa-solid fa-cart-shopping"></i>
-            {user?.cart.length > 0 ? (
+            {user?.cart?.length > 0 ? (
               <span className="badge-on-icon">
                 {user?.cart?.reduce(
                   (totalItems, { cartItem }) => totalItems + cartItem.quantity,

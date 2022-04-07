@@ -12,8 +12,11 @@ export const useLoginMutation = () =>
     },
     {
       onError: err => console.error(err),
-      onSuccess: ({ token }) => {
+      onSuccess: ({ token, user }) => {
         setToken(token);
+        queryClient.setQueryData("user", {
+          user
+        });
         queryClient.invalidateQueries("user", {
           refetchActive: true,
           refetchInactive: true

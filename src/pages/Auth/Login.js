@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm, useLoginMutation } from "../../hooks";
 import { toErrorMap } from "../../utils/toErrorMap";
@@ -21,13 +21,15 @@ const Login = () => {
     useForm(initialLoginData, loginValidator);
   const { mutate: login } = useLoginMutation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from ?? { pathname: "/" };
 
   const loginWithUserCredentials = e => {
     e.preventDefault();
     setSubmitting(true);
     if (errors) return setSubmitting(false);
     login(values, {
-      onSuccess: () => navigate("/"),
+      onSuccess: () => navigate(from),
       onError: err => {
         setErrors(toErrorMap(err.response.data.errors));
         setSubmitting(false);
@@ -38,7 +40,7 @@ const Login = () => {
   const loginWithTestCredentials = e => {
     e.preventDefault();
     login(testCredentials, {
-      onSuccess: () => navigate("/"),
+      onSuccess: () => navigate(from),
       onError: err => setErrors(toErrorMap(err.response.data.errors))
     });
   };
@@ -79,7 +81,7 @@ const Login = () => {
             </button>
           </div>
           <p className="ta-center">
-            <Link to="/signup" className="btn btn--link">
+            <Link to="/signup" state={{ from }} className="btn btn--link">
               Create New Account
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>

@@ -66,8 +66,8 @@ const Cart = () => {
           <div>
             {user?.cart?.map(product => {
               return (
-                <div className="mb-6">
-                  <Card key={product.id} product={product} />
+                <div key={product.id} className="mb-6">
+                  <Card product={product} />
                 </div>
               );
             })}
