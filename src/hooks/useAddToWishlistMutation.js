@@ -20,7 +20,7 @@ export const useAddToWishlistMutation = () =>
         queryClient.setQueryData("user", ({ user }) => ({
           user: {
             ...user,
-            wishlist: [product, ...user.wishlist]
+            wishlist: [product, ...user?.wishlist]
           }
         }))
     }

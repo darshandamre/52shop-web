@@ -22,12 +22,12 @@ export const useMoveToCartMutation = () =>
       onError: err => console.error(err),
       onSuccess: (data, productId) =>
         queryClient.setQueryData("user", ({ user }) => {
-          const { wishlist, cart } = user;
+          const { wishlist, cart } = user ?? {};
           if (data?.created) {
             return {
               user: {
                 ...user,
-                wishlist: wishlist.filter(item => item.id !== productId),
+                wishlist: wishlist?.filter(item => item.id !== productId),
                 cart: [data?.product, ...cart]
               }
             };
@@ -36,8 +36,8 @@ export const useMoveToCartMutation = () =>
           return {
             user: {
               ...user,
-              wishlist: user.wishlist.filter(item => item.id !== productId),
-              cart: user.cart.map(item =>
+              wishlist: user?.wishlist?.filter(item => item.id !== productId),
+              cart: user?.cart?.map(item =>
                 item.id === productId ? data?.product : item
               )
             }

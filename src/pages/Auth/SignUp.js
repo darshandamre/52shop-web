@@ -1,6 +1,6 @@
 import React from "react";
 import { useQueryClient } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { InputField } from "../../components";
 import { useForm, useSignupMutation } from "../../hooks";
 import { toErrorMap } from "../../utils/toErrorMap";
@@ -23,6 +23,8 @@ const SignUp = () => {
     setSubmitting,
     setErrors
   } = useForm(initialSignupData, signupValidator);
+  const location = useLocation();
+  const from = location.state?.from ?? { pathname: "/" };
 
   const { mutateAsync } = useSignupMutation();
   const navigate = useNavigate();
@@ -34,13 +36,14 @@ const SignUp = () => {
 
     if (!formErrors) {
       try {
-        const { token } = await mutateAsync(values);
+        const { token, user } = await mutateAsync(values);
         setToken(token);
+        queryClient.setQueryData("user", { user });
         queryClient.invalidateQueries("user", {
           refetchActive: true,
           refetchInactive: true
         });
-        navigate("/");
+        navigate(from);
       } catch (err) {
         setErrors(toErrorMap(err.response.data.errors));
       }
@@ -75,7 +78,11 @@ const SignUp = () => {
             </button>
           </div>
           <p className="ta-center">
-            <Link to="/login" className="btn btn--link">
+            <Link
+              to="/login"
+              state={{ from }}
+              replace
+              className="btn btn--link">
               Already have an account
               <i className="fa-solid fa-greater-than ml-1"></i>
             </Link>
