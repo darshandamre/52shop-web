@@ -9,3 +9,5 @@ export { useMoveToWishlistMutation } from "./useMoveToWishlistMutation";
 export { useAddToCartMutation } from "./useAddToCartMutation";
 export { useRemoveFromCartMutation } from "./useRemoveFromCartMutation";
 export { useMoveToCartMutation } from "./useMoveToCartMutation";
+export { useDecrementQuantityMutation } from "./useDecrementQuantityMutation";
+export { useIncrementQuantityMutation } from "./useIncrementQuantityMutation";
