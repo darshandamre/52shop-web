@@ -4,7 +4,7 @@ E-commerce app for premium playing cards. Shop the latest and highest quality pl
 
 This is a full-stack app created with React. It has all the essential features of an e-commerce application.
 
-deployed at - https://52shop-web-git-dev-darshandamre.vercel.app/
+deployed at - https://52shop.vercel.app/
 
 ### Installing locally
 
